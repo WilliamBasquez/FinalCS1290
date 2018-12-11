@@ -1,0 +1,10 @@
+Perfect Squares
+
+1)per_sqr_sum(n) = per_sqr_sum(n-square[i])
+  square[i] will be a square at given index, the subtraction will use all squares
+  
+2)The problem requires to return only the number of perfect squares, not the numbers themselves; therefore, when the function is called, a list of perfect squares will be created up to max_sqr
+  The interesting part begins when we use every square and see which one is better to start the sum at, so we check how many squares would be needed if we were to start at 1, in which case the number at the same position
+  as the square, but on another list will become the amount of numbers needed to sum up to n, using squares[i] and smaller squares.
+  To store the answers to sub-problems, i will create another list the same size as the squares list, and when we're done using all the squares, we return the smalles value from the second list.
+  The sub-problems are the instances where n is already a perfect square number, which is why i first create the list with perfect squares, so that in case that n is already a square number, we can just return that number

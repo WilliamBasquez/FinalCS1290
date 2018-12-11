@@ -1,0 +1,9 @@
+Integer Break
+
+1)int_break(n) = int_break(n-(n//i))
+  n = integer to break, i = amount of numbers in sum / multiplication at a certain point.
+  
+2)After doing some examples by hand, I noticed that the graph for products is a negative parabola, that passes through the origin and has a positive vertex, this will be helpful later.
+  To determine how many numbers we will need (at most) we divide n // 2 and that becomes the size of the list where several hopeful products will be stored. to find these numbers, we have a variable that will multiply the answer from n//i.
+  We stop doing this when n becomes 0, and the answer (most of the times) is at the very last index on this list, i say most of the times because there are cases where the answer is off by 1, and this happends because the division (n//2) is a decimal and the program performs ceiling division
+  

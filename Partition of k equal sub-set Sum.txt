@@ -1,0 +1,11 @@
+Partition of k equal sub-set Sum
+
+1)part_k_subset(n) = sum(n)%part_k_subset(n-1) + sum(n)%part_k_subset(n-2) + ... + sum(n)%part_k_subset(1), until the only possible subset is a single number
+  n = input array, s0+s1+s2+...sn-1+sn = n, and sum(s0) = sum(s1) = ... = sum(sn) 
+  
+2)The approach that I took on this problem is simple, it involves finding the total sum of n, and finding into how many subsets of equal value are do-able, and that's that.
+  First we must know the sum of a list of items; then, we can create a variable that will hold the possible subsets at a certain point, or create a list that will hold all possible k's
+  Going with the variable: once we calculate the total sum of n, and we check if sum(n) % len(n) == 0, if it does, len(n) becomes a possible solution.
+  To be more careful, we have to stop until 2 conditions are met: 1) the division of sum(n) / len(n) equals a value smaller than the max_val in n (if we divide 10/5 = 2, but max_val in list L, is 3, we stop or 
+  2) the division of sum(n) / len(n) == k, meaning that k an answer
+  Using a list: we do the same thing, but instead of updating the variable every time, we can just append it to a list containing all possible k's and just search for k inside this list

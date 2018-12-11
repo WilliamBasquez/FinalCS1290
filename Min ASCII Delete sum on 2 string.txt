@@ -1,0 +1,21 @@
+Min ASCII Delete sum on 2 string
+
+1)min_delete_sum(n, m) = min_delete_sum(n-1, m-1), if both strings have the same length
+  min_delete_sum(n, m) = min_delete_sum(n-i, m), delete letters to make length of n equal to m, vice versa for m; i = number of letters deleted
+  
+2)I took some inspiration from the edit distance problem, where we are able to find out how many modifications are needed to turn a string into another, but it does not say what changes need to be done in what order.
+  So, in my solution, I used 2 cases: strings are equal length, and 1 string is longer than the other.
+  Case 1)Strings have same length:
+         In this case we create 2, 2D array, one will contain both words, and the second one will be populated it with 0. We compare the each letter from string 's1' to each letter from string 's2'.
+		 If in the process we find that a letter matches another, we get the coordinates of these 2 letters, and change their values on the second matrix to 1's, now here's where the tricky part comes in, now the following letter to be compared
+		 cannot be compared to letters that are before a matching pair or letters, because by not being careful as to what letters are being compared, we can run into a case where we compare letters twice in wrong order, and this brings more problems(insertion/replacement).
+		 So if in a matrix, 2 letters match at indexes [0][2] and [1][3], the following search will begin at indexes [0][3] and [1][4], if position is valid.
+		 At the end, we traverse the second matrix looking for 0's and we match those positions to those in the first matrix, and we add their ASCII values to a variable, which will be returned
+  Case 2)String 1 is longer than string 2:
+         In this case, we do the same as with the previous case, but we delete letters from the front of the matrix until they both have the same length, then we proceed with the same algorithm as before
+		 "delete" and "leet", we delete "de" from "delete" turning it into "lete", then we check those 2 strings (below), but the sum already is 'd'[100]+'e'[101] = 201, meaning we cannot do better than that number
+		 [l][e][t][e]
+		 [l][e][e][t]
+		  |  |
+		 [t][e]
+		 [e][t] --> t comes first, so we have to add the value for both 'e's
